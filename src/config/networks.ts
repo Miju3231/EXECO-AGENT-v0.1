@@ -87,7 +87,7 @@ export const NETWORKS: NetworkInfo[] = [
     shortName: 'ARC',
     rpcUrls: ['https://rpc.testnet.arc.network'],
     explorerUrl: 'https://testnet.arcscan.app',
-    nativeCurrency: { name: 'USDC', symbol: 'USDC', decimals: 18 },
+    nativeCurrency: { name: 'USDC', symbol: 'USDC', decimals: 6 },
     isTestnet: true,
     color: '#00E5FF',
   },
@@ -201,7 +201,7 @@ export const WALLET_ADD_PARAMS: Record<number, object> = {
     chainId: '0x4ccf2',
     chainName: 'Arc Testnet',
     rpcUrls: ['https://rpc.testnet.arc.network'],
-    nativeCurrency: { name: 'USDC', symbol: 'USDC', decimals: 18 },
+    nativeCurrency: { name: 'USDC', symbol: 'USDC', decimals: 6 },
     blockExplorerUrls: ['https://testnet.arcscan.app'],
   },
 };
