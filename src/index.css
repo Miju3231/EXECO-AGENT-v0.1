@@ -1,0 +1,183 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── CSS Variables ────────────────────────────────────────────────────────── */
+:root {
+  --c-bg:        #080B10;
+  --c-surface:   #0D1117;
+  --c-elevated:  #161C26;
+  --c-border:    #1E2736;
+  --c-accent:    #00E5FF;
+  --c-accent-10: rgba(0,229,255,0.10);
+  --c-accent-20: rgba(0,229,255,0.20);
+  --c-accent-40: rgba(0,229,255,0.40);
+  --c-text:      #E8ECF0;
+  --c-muted:     #7B8A9C;
+  --c-dim:       #3D4E62;
+  --c-success:   #00FF94;
+  --c-danger:    #FF3B6B;
+  --c-warning:   #FFB800;
+}
+
+/* ─── Base ─────────────────────────────────────────────────────────────────── */
+* { box-sizing: border-box; }
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+body {
+  background: var(--c-bg);
+  color: var(--c-text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--c-border) transparent;
+}
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--c-border); border-radius: 2px; }
+
+/* ─── Reusable Classes ──────────────────────────────────────────────────────── */
+.glass {
+  background: rgba(13,17,23,0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--c-border);
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  background: var(--c-accent);
+  color: var(--c-bg);
+  border: none;
+  cursor: pointer;
+  transition: all 0.15s;
+  box-shadow: 0 0 20px var(--c-accent-20);
+}
+.btn-primary:hover { filter: brightness(1.12); box-shadow: 0 0 28px var(--c-accent-40); }
+.btn-primary:disabled { opacity: 0.4; cursor: not-allowed; filter: none; }
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  background: transparent;
+  color: var(--c-muted);
+  border: 1px solid var(--c-border);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.btn-ghost:hover { border-color: var(--c-accent); color: var(--c-accent); }
+.btn-ghost:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.input-field {
+  width: 100%;
+  background: var(--c-elevated);
+  border: 1px solid var(--c-border);
+  border-radius: 6px;
+  padding: 10px 12px;
+  color: var(--c-text);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.input-field:focus { border-color: var(--c-accent); }
+.input-field::placeholder { color: var(--c-dim); }
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 100px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  background: var(--c-accent-10);
+  color: var(--c-accent);
+  border: 1px solid var(--c-accent-20);
+}
+
+/* ─── Chat Bubbles ──────────────────────────────────────────────────────────── */
+.bubble-ai {
+  background: var(--c-elevated);
+  border: 1px solid var(--c-border);
+  border-radius: 3px 12px 12px 12px;
+  padding: 10px 14px;
+  max-width: 420px;
+}
+
+.bubble-user {
+  background: var(--c-accent-10);
+  border: 1px solid var(--c-accent-20);
+  border-radius: 12px 3px 12px 12px;
+  padding: 10px 14px;
+  max-width: 360px;
+}
+
+/* ─── Typing Indicator ────────────────────────────────────────────────────── */
+.dot {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--c-accent);
+  animation: blink 1.3s ease-in-out infinite;
+}
+.dot:nth-child(2) { animation-delay: 0.2s; }
+.dot:nth-child(3) { animation-delay: 0.4s; }
+@keyframes blink {
+  0%, 100% { opacity: 0.2; transform: scale(0.85); }
+  50%       { opacity: 1;   transform: scale(1.1);  }
+}
+
+/* ─── Grid background ────────────────────────────────────────────────────── */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(0,229,255,0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,229,255,0.018) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+/* ─── Step status colors ─────────────────────────────────────────────────── */
+.step-done    { color: var(--c-success); }
+.step-loading { color: var(--c-accent);  }
+.step-error   { color: var(--c-danger);  }
+.step-pending { color: var(--c-dim);     }
+
+/* ─── RainbowKit overrides ───────────────────────────────────────────────── */
+[data-rk] {
+  --rk-colors-accentColor:              #00E5FF !important;
+  --rk-colors-accentColorForeground:    #080B10 !important;
+  --rk-colors-modalBackground:          #0D1117 !important;
+  --rk-colors-modalBorder:              #1E2736 !important;
+  --rk-colors-connectButtonBackground:  #0D1117 !important;
+  --rk-colors-connectButtonText:        #E8ECF0 !important;
+  --rk-radii-connectButton:             6px     !important;
+  --rk-fonts-body:                      'DM Sans', sans-serif !important;
+}
