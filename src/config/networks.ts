@@ -135,11 +135,16 @@ export const TOKEN_ADDRESSES: Record<number, Record<string, `0x${string}`>> = {
     WETH: '0x980B62Da83eFf3D4576C647993b0c1D7faf17c73',
     USDC: '0x75faf114eafb1BDbe2F0316DF893fd58CE46AA4d',
   },
-    },
-  // Arc Testnet — https://docs.arc.network/arc/references/connect-to-arc
-  5042002: {
-    USDC: '0x3600000000000000000000000000000000000000',
+  // Optimism Sepolia
+  11011: {                                                                                                                                                                                                            
+    WETH: '0x4200000000000000000000000000000000000006',
+    USDC: '0x7F5c764cBc14f9669B88837ca1490cCa17c31607',
   },
+  // Arc Testnet
+  5042002: {
+    USDC: '0x3910B7cbb3341f1F4bF4cEB66e4A2C8f204FE2b8',
+  },
+
 };
 
 // Uniswap V3 SwapRouter02 addresses (no SDK needed — direct contract call)
